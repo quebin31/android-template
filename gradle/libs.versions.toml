@@ -11,8 +11,6 @@ ktor = "2.1.3"
 room = "2.5.1"
 # Testing
 junit = "4.13.2"
-androidx-test-ext-junit = "1.1.5"
-espresso-core = "3.5.1"
 mockk = "1.13.3"
 strikt = "0.33.0"
 junit5 = "5.9.1"
