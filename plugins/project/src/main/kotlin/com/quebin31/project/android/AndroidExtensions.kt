@@ -54,14 +54,8 @@ fun Project.androidLibraryModule(configure: AndroidLibExtension.() -> Unit) {
     val scope = AndroidLibExtension().apply(configure)
 
     androidBase(scope) {
-        libraryVariants.all {
-            val isDebugVariant = baseName.contains("debug")
-            val isGenerationEnabled = isDebugVariant && scope.buildConfig
-
-            // Enable or disable the step which generates the `BuildConfig` class
-            generateBuildConfigProvider?.configure {
-                enabled = isGenerationEnabled
-            }
+        buildFeatures {
+            buildConfig = scope.buildConfig
         }
 
         buildTypes {
