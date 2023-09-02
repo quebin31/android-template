@@ -19,7 +19,7 @@ open class JacocoMergedReport : JacocoReport() {
         dependsOn(enabledSubprojectTasks)
 
         reports {
-            val reportsOutput = "${project.buildDir}/reports/coverage/merged"
+            val reportsOutput = "${project.layout.buildDirectory}/reports/coverage/merged"
 
             getByName<DirectoryReport>("html") {
                 required.set(true)
@@ -34,7 +34,7 @@ open class JacocoMergedReport : JacocoReport() {
 
         val mergedClassDirectories = enabledSubprojects
             .map {
-                it.fileTree("${it.buildDir}/tmp/kotlin-classes/debug").run {
+                it.fileTree("${it.layout.buildDirectory}/tmp/kotlin-classes/debug").run {
                     exclude("**/R.class", "**/R$*.class")
                     exclude("**/BuildConfig", "**/BuildConfig.*", "**/Manifest*.*")
                     exclude("**/*Test*.*")
@@ -49,7 +49,7 @@ open class JacocoMergedReport : JacocoReport() {
 
         val mergedExecutionData = enabledSubprojects
             .map {
-                it.fileTree("${it.buildDir}/outputs").run {
+                it.fileTree("${it.layout.buildDirectory}/outputs").run {
                     include("unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
                     include("code_coverage/debugAndroidTest/**/coverage.ec")
                     asFileTree
