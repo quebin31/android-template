@@ -163,7 +163,7 @@ private inline fun <reified T : BaseExtension> Project.androidBase(
 
     buildTypes {
         named("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             val androidProguard = getDefaultProguardFile("proguard-android-optimize.txt")
             proguardFiles(androidProguard, "proguard-rules.pro")
         }

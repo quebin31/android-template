@@ -47,7 +47,7 @@ allprojects {
 subprojects {
     apply(plugin = "jacoco")
 
-    tasks.whenTaskAdded {
+    tasks.configureEach {
         // Uninstall instrumentation tests APKs after run
         if (name == "connectedDebugAndroidTest") {
             finalizedBy("uninstallDebugAndroidTest")
